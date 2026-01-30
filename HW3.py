@@ -1,12 +1,12 @@
 # Name: Yunchang "Daniel" Hur
-# Student ID:
+# Student ID: yhur55
 # Email: yhur@wma.us
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
-# If you worked with generative AI also add a statement for how you used it.
-# e.g.:
-# Asked ChatGPT hints for debugging and suggesting the general structure of the code
-# Did your use of GenAI on this assignment align with your goals and guidelines in 
-#    your Gen AI contract? If not, why?
+"""
+I worked with ChatGPT to get hints for debugging and to clarify the 
+required logic and structure of the functions, as mentioned in the 
+GenAI contract. I used it to better understand the instructions.
+"""
 
 import random
 import io
