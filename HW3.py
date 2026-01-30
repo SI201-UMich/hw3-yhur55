@@ -114,12 +114,9 @@ class CouponDispenser:
                 names = [name.strip() for name in user_input.split(",") if name.strip()]
                 for name in names:
                     message = self.issue_coupon(name)
-                    if message.startswith("That name already has a coupon:"):
-                        print(message)
+                    print(message)
             round_number += 1
 
-
-        pass
 
     def tally_distribution(self):
         """
@@ -137,7 +134,16 @@ class CouponDispenser:
             None
         """
         # TODO: Implement per instructions
-        pass
+        if not self.issued_indices:
+            print("Empty")
+            return
+        counts = [0] * len(self.coupon_cards)
+        for index in self.issued_indices:
+            counts[index] += 1
+        for i in range(len(self.coupon_cards)):
+            coupon = self.coupon_cards[i]
+            print(f"{coupon} distribution count: {counts[i]}.")
+        return
 
 
 def main():
