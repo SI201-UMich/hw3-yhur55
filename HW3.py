@@ -38,8 +38,6 @@ class CouponDispenser:
         self.customer_roster = []
         self.issued_indices = []
 
-        pass
-
     def __str__(self):
         """
         Return a single string with all coupons in coupon_cards joined by pipes ('|').
@@ -53,8 +51,6 @@ class CouponDispenser:
         if not self.coupon_cards:
             return ""
         return '|'.join(self.coupon_cards)
-
-        pass
 
     def issue_coupon(self, name):
         """
@@ -74,8 +70,17 @@ class CouponDispenser:
 
         if not self.coupon_cards:
             return "The box is empty."
-
-        pass
+        if name in self.customer_roster:
+            index = self.customer_roster.index(name)
+            coupon_index = self.issued_indices[index]
+            coupon = self.coupon_cards[coupon_index]
+            return f"That name already has a coupon: {coupon}"
+        else:
+            coupon_index = random.randint(0, len(self.coupon_cards) - 1)
+            self.customer_roster.append(name)
+            self.issued_indices.append(coupon_index)
+            coupon = self.coupon_cards[coupon_index]
+            return coupon
 
     def distribute_session(self):
         """
@@ -93,7 +98,25 @@ class CouponDispenser:
         Reminder: Use lists only (no dictionaries).
         """
         # TODO: Implement per instructions 
-
+        round_number = 1
+        while True:
+            user_input = input(f"Round {round_number} - Enter a name (or a comma-separated list), or type 'show' or 'exit': ")
+            if user_input == "exit":
+                print("Goodbye!")
+                break
+            elif user_input == "show":
+                for i in range(len(self.customer_roster)):
+                    name = self.customer_roster[i]
+                    coupon_index = self.issued_indices[i]
+                    coupon = self.coupon_cards[coupon_index]
+                    print(f"{name}: {coupon}")
+            else:
+                names = [name.strip() for name in user_input.split(",") if name.strip()]
+                for name in names:
+                    message = self.issue_coupon(name)
+                    if message.startswith("That name already has a coupon:"):
+                        print(message)
+            round_number += 1
 
 
         pass
